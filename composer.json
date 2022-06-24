@@ -12,6 +12,11 @@
         "league/flysystem": "<3.0",
         "aliyuncs/oss-sdk-php": "^2.4"
     },
+    "autoload": {
+        "psr-4": {
+            "Jewdore\\AliyunOssFileSystem\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
