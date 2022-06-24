@@ -2,7 +2,7 @@
 
 namespace Jewdore\AliyunOssFileSystem;
 
-use Jewdore\AliyunOssFileSystem\Flysystem\AliyunFactory;
+use Jewdore\AliyunOssFileSystem\FileSystem\AliyunFactory;
 use Jewdore\AliyunOssFileSystem\Macros\AliyunMacro;
 use Jewdore\AliyunOssFileSystem\Macros\AppendFile;
 use Jewdore\AliyunOssFileSystem\Macros\AppendObject;

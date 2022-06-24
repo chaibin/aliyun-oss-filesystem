@@ -2,8 +2,8 @@
 
 namespace Jewdore\AliyunOssFileSystem\Macros;
 
-use Jewdore\AliyunOssFileSystem\Flysystem\AliyunAdapter;
-use Jewdore\AliyunOssFileSystem\Flysystem\AliyunException;
+use Jewdore\AliyunOssFileSystem\FileSystem\AliyunAdapter;
+use Jewdore\AliyunOssFileSystem\FileSystem\AliyunException;
 use Illuminate\Filesystem\FilesystemAdapter;
 use League\Flysystem\Config;
 use OSS\Core\OssException;
