@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jewdore\\AliyunOssFileSystem\\AliyunServiceProvider"
+                "Jewdore\\AliyunOssFileSystem\\ServiceProvider"
             ]
         }
     }
