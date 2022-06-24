@@ -2,7 +2,7 @@
 
 namespace Jewdore\AliyunOssFileSystem;
 
-use Jewdore\AliyunOssFileSystem\Flysystem\Plugins\AppendContent;
+use Jewdore\AliyunOssFileSystem\FileSystem\Plugins\AppendContent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use League\Flysystem\Config as FlysystemConfig;
 use League\Flysystem\Filesystem;

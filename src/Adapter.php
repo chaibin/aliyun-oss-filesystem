@@ -2,7 +2,7 @@
 
 namespace Jewdore\AliyunOssFileSystem;
 
-use Jewdore\AliyunOssFileSystem\Flysystem\AliyunOssAdapter as BaseAdapter;
+use Jewdore\AliyunOssFileSystem\FileSystem\AliyunOssAdapter as BaseAdapter;
 use League\Flysystem\Config as FlysystemConfig;
 use OSS\OssClient;
 
@@ -57,7 +57,13 @@ class Adapter extends BaseAdapter
         }
         $timeout = $expiration->getTimestamp() - (new \DateTime('now'))->getTimestamp();
 
-        $url = $this->client->signUrl($this->bucket, $object, $timeout, OssClient::OSS_HTTP_GET, $clientOptions);
+        $httpMethod = OssClient::OSS_HTTP_GET;
+        if(isset($options['http_method'])){
+            $httpMethod = $options['http_method'];
+            unset($options['http_method']);
+        }
+
+        $url = $this->client->signUrl($this->bucket, $object, $timeout, $httpMethod, $clientOptions);
         return $this->ossConfig->correctUrl($url);
     }
 }

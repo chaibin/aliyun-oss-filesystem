@@ -2,7 +2,7 @@
 
 namespace Jewdore\AliyunOssFileSystem\FileSystem\Plugins;
 
-use Jewdore\AliyunOssFileSystem\Flysystem\AliyunOssAdapterInterface;
+use Jewdore\AliyunOssFileSystem\FileSystem\AliyunOssAdapterInterface;
 use League\Flysystem\Config;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
