@@ -1,6 +1,6 @@
 <?php
 
-namespace Jewdore\AliyunOssFileSystem\Flysystem\Plugins;
+namespace Jewdore\AliyunOssFileSystem\FileSystem\Plugins;
 
 class AppendContent extends AliyunOssAbstractPlugin
 {

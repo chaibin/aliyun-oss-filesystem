@@ -1,6 +1,6 @@
 <?php
 
-namespace Jewdore\AliyunOssFileSystem\Flysystem;
+namespace Jewdore\AliyunOssFileSystem\FileSystem;
 
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Adapter\CanOverwriteFiles;

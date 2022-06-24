@@ -1,6 +1,6 @@
 <?php
 
-namespace Jewdore\AliyunOssFileSystem\Flysystem\Plugins;
+namespace Jewdore\AliyunOssFileSystem\FileSystem\Plugins;
 
 use Jewdore\AliyunOssFileSystem\Flysystem\AliyunOssAdapterInterface;
 use League\Flysystem\Config;
