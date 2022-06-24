@@ -1,7 +1,7 @@
 {
     "name": "jewdore/aliyun-oss-filesystem",
-    "type": "1",
-    "license": "GPL",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "jewdore",
