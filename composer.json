@@ -1,0 +1,22 @@
+{
+    "name": "jewdore/aliyun-oss-filesystem",
+    "type": "1",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "jewdore",
+            "email": "jewdore@gmail.com"
+        }
+    ],
+    "require": {
+        "league/flysystem": "<3.0",
+        "aliyuncs/oss-sdk-php": "^2.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jewdore\\AliyunOssFileSystem\\AliyunServiceProvider"
+            ]
+        }
+    }
+}
