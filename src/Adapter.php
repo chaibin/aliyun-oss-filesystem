@@ -58,12 +58,30 @@ class Adapter extends BaseAdapter
         $timeout = $expiration->getTimestamp() - (new \DateTime('now'))->getTimestamp();
 
         $httpMethod = OssClient::OSS_HTTP_GET;
-        if(isset($options['http_method'])){
+        if (isset($options['http_method'])) {
             $httpMethod = $options['http_method'];
             unset($options['http_method']);
         }
 
         $url = $this->client->signUrl($this->bucket, $object, $timeout, $httpMethod, $clientOptions);
         return $this->ossConfig->correctUrl($url);
+    }
+
+    public function getPostParams($object, $expiration)
+    {
+        $params = [
+            'accessid' => $this->ossConfig->get('access_id'),
+            'host' => $this->ossConfig->getUrlDomain(),
+            'policy' => base64_encode(json_encode([
+                'expiration' => str_replace('+00:00', '.000Z', gmdate('c', $expiration)),
+                'conditions' => [
+                    ["content-length-range", 0, 104857600],
+                    ["eq", '$key', $object]
+                ]
+            ])),
+        ];
+        $params['signature'] = base64_encode(hash_hmac('sha1', $params['policy'], $this->ossConfig->get('access_key'), true));
+        $params['dir'] = $object;
+        return $params;
     }
 }
