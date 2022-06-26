@@ -96,7 +96,7 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
         return [
             "type" => "file",
             "path" => $path,
-            "url" => isset($result["info"]["url"]) ? intval($result["info"]["url"]) : 0,
+            "url" => isset($result["info"]["url"]) ? $result["info"]["url"] : '',
             "size" => isset($result["info"]["download_content_length"]) ? intval($result["info"]["download_content_length"]) : 0,
             "timestamp" => isset($result["info"]["filetime"]) ? $result["info"]["filetime"] : 0,
             "mimetype" => isset($result["info"]["content_type"]) ? $result["info"]["content_type"] : "",
@@ -372,7 +372,7 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
         return [
             "type" => "file",
             "path" => $path,
-            "url" => isset($result["info"]["url"]) ? intval($result["info"]["url"]) : 0,
+            "url" => isset($result["info"]["url"]) ? $result["info"]["url"] : '',
             "size" => isset($result["info"]["download_content_length"]) ? intval($result["info"]["download_content_length"]) : 0,
             "timestamp" => isset($result["info"]["filetime"]) ? $result["info"]["filetime"] : 0,
             "mimetype" => isset($result["info"]["content_type"]) ? $result["info"]["content_type"] : "",
