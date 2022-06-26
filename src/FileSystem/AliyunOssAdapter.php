@@ -289,7 +289,7 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
      */
     public function listContents($directory = "", $recursive = false)
     {
-        $directory = $this->applyPathPrefix(rtrim($directory, "/")."/");
+        $directory = $this->applyPathPrefix(rtrim($directory, "/") . "/");
 
         $options = array_merge([
             "delimiter" => "/",
@@ -310,7 +310,7 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
                     if ($objectInfo->getSize() === 0 && $directory === $objectInfo->getKey()) {
                         $result[] = [
                             "type" => "dir",
-                            "path" => $this->removePathPrefix(rtrim($objectInfo->getKey(), "/")."/"),
+                            "path" => $this->removePathPrefix(rtrim($objectInfo->getKey(), "/") . "/"),
                             "size" => 0,
                             "timestamp" => strtotime($objectInfo->getLastModified()),
                         ];
@@ -328,7 +328,7 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
 
             $prefixList = $listObjectInfo->getPrefixList();
             foreach ($prefixList as $prefixInfo) {
-                $nextDirectory = rtrim($prefixInfo->getPrefix(), "/")."/";
+                $nextDirectory = rtrim($prefixInfo->getPrefix(), "/") . "/";
                 if ($nextDirectory == $directory) {
                     continue;
                 }
@@ -372,9 +372,11 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
         return [
             "type" => "file",
             "path" => $path,
+            "url" => isset($result["info"]["url"]) ? intval($result["info"]["url"]) : 0,
             "size" => isset($result["info"]["download_content_length"]) ? intval($result["info"]["download_content_length"]) : 0,
             "timestamp" => isset($result["info"]["filetime"]) ? $result["info"]["filetime"] : 0,
-            "mimetype" => isset($result["info"]["content_type"]) ? $result["info"]["content_type"] : ""
+            "mimetype" => isset($result["info"]["content_type"]) ? $result["info"]["content_type"] : "",
+            "md5" => isset($result["content-md5"]) ? $result["content-md5"] : "",
         ];
     }
 
@@ -515,6 +517,6 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
         $isCName = isset($options["is_cname"]) ? $options["is_cname"] : false;
         $securityToken = isset($options["security_token"]) ? $options["security_token"] : null;
         $requestProxy = isset($options["request_proxy"]) ? $options["request_proxy"] : null;
-        return new static(new OssClient($accessId, $accessKey, $endpoint, $isCName, $securityToken, $requestProxy),$bucket,$prefix,$options);
+        return new static(new OssClient($accessId, $accessKey, $endpoint, $isCName, $securityToken, $requestProxy), $bucket, $prefix, $options);
     }
 }
