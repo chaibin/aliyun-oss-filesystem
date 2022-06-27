@@ -71,7 +71,7 @@ class Adapter extends BaseAdapter
     {
         $expireAt = time() + $expiration;
         $params = [
-            'accessid' => $this->ossConfig->get('access_id'),
+            'OSSAccessKeyId' => $this->ossConfig->get('access_id'),
             'host' => $this->ossConfig->getUrlDomain(),
             'policy' => base64_encode(json_encode([
                 'expiration' => str_replace('+00:00', '.000Z', gmdate('c', $expireAt)),
@@ -81,8 +81,8 @@ class Adapter extends BaseAdapter
                 ]
             ])),
         ];
-        $params['signature'] = base64_encode(hash_hmac('sha1', $params['policy'], $this->ossConfig->get('access_key'), true));
-        $params['file'] = $object;
+        $params['Signature'] = base64_encode(hash_hmac('sha1', $params['policy'], $this->ossConfig->get('access_key'), true));
+        $params['key'] = $object;
         $params['expire'] = $expireAt;
         return $params;
     }
