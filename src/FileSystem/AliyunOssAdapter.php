@@ -74,7 +74,8 @@ class AliyunOssAdapter extends AbstractAdapter implements CanOverwriteFiles, Ali
             "path" => $path,
             "timestamp" => isset($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_DATE]) ? strtotime($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_DATE]) : 0,
             "size" => isset($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_LENGTH]) ? intval($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_LENGTH]) : 0,
-            "mimetype" => isset($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_TYPE]) ? $result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_TYPE] : ""
+            "mimetype" => isset($result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_TYPE]) ? $result[self::OSS_REQUEST_HEADERS][OssClient::OSS_CONTENT_TYPE] : "",
+            "md5" => isset($result["content-md5"]) ? $result["content-md5"] : "",
         ];
     }
 

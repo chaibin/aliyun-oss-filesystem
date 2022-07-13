@@ -5,6 +5,7 @@ namespace Jewdore\AliyunOssFileSystem;
 use Jewdore\AliyunOssFileSystem\FileSystem\Plugins\AppendContent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Jewdore\AliyunOssFileSystem\FileSystem\Plugins\GetPostParams;
+use Jewdore\AliyunOssFileSystem\FileSystem\Plugins\PutResult;
 use League\Flysystem\Config as FlysystemConfig;
 use League\Flysystem\Filesystem;
 use OSS\OssClient;
@@ -51,6 +52,7 @@ class ServiceProvider extends BaseServiceProvider
             $filesystem = new Filesystem($adapter, new FlysystemConfig(['disable_asserts' => true]));
             $filesystem->addPlugin(new AppendContent());
             $filesystem->addPlugin(new GetPostParams());
+            $filesystem->addPlugin(new PutResult());
             return $filesystem;
         });
     }
