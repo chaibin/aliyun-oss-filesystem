@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "league/flysystem": "^1.1",
+        "league/flysystem": "^3.21.0",
         "aliyuncs/oss-sdk-php": "2.5.*"
     },
     "autoload": {
